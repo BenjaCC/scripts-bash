@@ -1,3 +1,4 @@
+#!/bin/bash
 
 #!/bin/bash
 # Uso: sudo ./crear_usuarios.sh usuarios.txt
@@ -16,7 +17,7 @@ fi
 
 while read -r USUARIO; do
     [ -z "$USUARIO" ] && continue
-    if id "$USUARIO" &>/dev/null; then
+    if id "$USUARIO" >/dev/null 2>&1; then
         echo "El usuario $USUARIO ya existe, se omite"
     else
         useradd -m "$USUARIO"
