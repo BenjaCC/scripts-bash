@@ -87,3 +87,24 @@ Resultado: `~/respaldos/respaldo-2026-11-23.tar.gz`
 - Compresión y empaquetado con `tar`
 
 
+## crear_usuarios.sh
+
+Crea usuarios del sistema a partir de un archivo de texto con un nombre por línea.
+
+### Uso
+```bash
+sudo ./crear_usuarios.sh usuarios.txt
+```
+
+### Cómo funciona
+1. Valida que se pase un archivo existente y que se ejecute con `sudo`.
+2. Lee el archivo línea por línea con un bucle `while read`.
+3. Si el usuario ya existe (`id`), lo omite y avisa.
+4. Si no existe, lo crea con `useradd -m` (con su directorio home).
+
+### Conceptos que practico
+- Bucles `while` y lectura de archivos
+- Validación de argumentos y de permisos (`$EUID`)
+- Gestión de usuarios (`useradd`, `id`)
+- Idempotencia: ejecutar el script dos veces no rompe nada
+
